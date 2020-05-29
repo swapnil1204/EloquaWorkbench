@@ -1,5 +1,5 @@
-const app = require('C:/Users/Admin/Desktop/SWAP/PORTQII/EloquaWorkbenchportqii/backend/app.js');
-const routes = require('C:/Users/Admin/Desktop/SWAP/PORTQII/EloquaWorkbenchportqii/backend/routes/routes.js');
+const app = require('./app.js');
+const routes = require('./routes/routes');
 const bodyparser = require('body-parser');
 require('dotenv').config();
 
@@ -7,7 +7,7 @@ app.use(bodyparser.urlencoded({ extended:true }));
 
 app.use(bodyparser.json());
 
-app.use('/',routes);
+app.use('/api/REST/1.0/data/',routes);
 
 const port = process.env.port;
 app.listen(port,()=>{
