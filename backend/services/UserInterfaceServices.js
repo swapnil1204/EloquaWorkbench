@@ -3,9 +3,22 @@
     const Q = require('q');
     services.getInstanceDetails = function () {
         const deferred = Q.defer();
-        const query = `SELECT ApiParameter.ApiTypeId, ApiParameter.Name,ApiParameter.Required,ApiType.ApiHeader1,ApiType.ApiHeader2 FROM ApiParameter INNER JOIN ApiType ON ApiParameter.apiTypeid=ApiType.Id`;
-        db.query(query).then((pack) => {
-            deferred.resolve(pack);
+        
+        const query2 = `SELECT ApiTypeId, Name, Required from ApiParameter where ApiTypeId=1`;
+        
+        const query3 = `SELECT ApiHeader1, ApiHeader2, TypeOfActivity,
+                        HttpMethod, Tab1, Tab2, Tab3, ApiEndPoint from ApiType where ApiType.Id=1`;
+                        
+        db.query(query3).then((pack) => {
+            db.query(query2).then((result)=>{
+            let response = {}
+            response.elements = pack;
+            response.parameter = result;
+            deferred.resolve(response);
+            },(err)=>{
+            deferred.reject(err);
+            })                      
+            //deferred.resolve(pack); 
         }, (err) => {
             deferred.reject(err);
         });
