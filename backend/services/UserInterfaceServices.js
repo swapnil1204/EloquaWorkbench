@@ -1,6 +1,19 @@
 (function(services) {
     const db = require('../config/dbConfig');
     const Q = require('q');
+    services.getOraceEloquaApisDetails = function () {
+        const deferred = Q.defer();
+        
+        const query = `SELECT * from ApiAssetGroup`;
+                             
+        db.query(query).then((pack) => {                  
+            deferred.resolve(pack); 
+        }, (err) => {
+            deferred.reject(err);
+        });
+        return deferred.promise;
+    }
+
     services.getInstanceDetails = function () {
         const deferred = Q.defer();
         
@@ -24,5 +37,6 @@
         });
         return deferred.promise;
         }
+
 
 })(module.exports);
