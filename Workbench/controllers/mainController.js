@@ -22,15 +22,16 @@ workbench
         }
 
         $scope.getdropdown = function() {
+            console.log("clicked");
             $http({
-                    url: "getdropdownData",
-                    method: "POST",
+                    url: "/api/REST/1.0/data/OracleEloquaApis",
+                    method: "GET",
                     data: {
                         "Id": "1"
                     }
                 }).then(function(response) {
                     console.log(response.data);
-                    $scope.Admin.init();
+
 
                 })
                 .catch(function(error) {
