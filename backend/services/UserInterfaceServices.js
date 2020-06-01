@@ -14,12 +14,12 @@
         return deferred.promise;
     }
 
-    services.getInstanceDetails = function () {
+    services.getCreateAccountApis = function () {
         const deferred = Q.defer();
         
         const query2 = `SELECT ApiTypeId, Name, Required from ApiParameter where ApiTypeId=1`;
         
-        const query3 = `SELECT ApiHeader1, ApiHeader2, TypeOfActivity,
+        const query3 = `SELECT Id, ApiHeader1, ApiHeader2, TypeOfActivity,
                         HttpMethod, Tab1, Tab2, Tab3, ApiEndPoint from ApiType where ApiType.Id=1`;
                         
         db.query(query3).then((pack) => {
