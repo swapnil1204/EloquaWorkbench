@@ -19,3 +19,14 @@ module.exports.getCreateAccountApis= (req,res) => {
             res.send(error);
         })
 }
+
+module.exports.getAccountApis= (req,res) => {
+    const services = require('../services/UserInterfaceServices');
+    
+    services.getAccountApis()
+        .then((result) => {
+            res.send(result).status(200);
+        }).catch((error)=>{
+            res.send(error);
+        })
+}

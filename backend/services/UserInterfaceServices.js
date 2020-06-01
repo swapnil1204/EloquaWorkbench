@@ -14,6 +14,20 @@
         return deferred.promise;
     }
 
+    services.getAccountApis = function () {
+        const deferred = Q.defer();
+        
+        const query = `select Id, Name from ApiType where ApiAssetGroupId=1;`;
+                           
+        db.query(query).then((pack) => {                     
+            deferred.resolve(pack); 
+        }, (err) => {
+            deferred.reject(err);
+        });
+        return deferred.promise;
+    }
+
+
     services.getCreateAccountApis = function () {
         const deferred = Q.defer();
         
