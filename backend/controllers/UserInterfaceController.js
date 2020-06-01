@@ -1,6 +1,5 @@
 module.exports.getOraceEloquaApisDetails= (req,res) => {
     const services = require('../services/UserInterfaceServices');
-    
     services.getOraceEloquaApisDetails()
         .then((result) => {
             res.send(result).status(200);
