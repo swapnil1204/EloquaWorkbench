@@ -1,0 +1,34 @@
+{
+    "name": "workbench",
+    "version": "1.0.0",
+    "description": "workbench",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \\\"Error: no test specified\\\" && exit 1",
+        "start": "node server"
+    },
+    "keywords": [
+        "workbench"
+    ],
+    "author": "Portqii",
+    "license": "ISC",
+    "dependencies": {
+        "angular": "^1.7.9",
+        "angular-animate": "^1.7.9",
+        "angular-aria": "^1.7.9",
+        "angular-material": "^1.1.22",
+        "angular-ui-router": "^1.0.26",
+        "crypto-js": "^4.0.0",
+        "express": "^4.17.1",
+        "fs": "0.0.1-security",
+        "http-server": "^0.12.3",
+        "moment": "^2.26.0",
+        "moment-timezone": "^0.5.31",
+        "mysql": "^2.18.1",
+        "request": "^2.88.2",
+        "request-promise": "^4.2.5",
+        "ui-bootstrap": "^0.1.11",
+        "underscore": "^1.10.2",
+        "url": "^0.11.0"
+    }
+}
