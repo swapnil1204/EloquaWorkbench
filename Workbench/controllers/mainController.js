@@ -24,14 +24,14 @@ workbench
         $scope.getdropdown = function() {
             console.log("clicked");
             $http({
-                    url: "/api/REST/1.0/data/OracleEloquaApis",
+                    url: "http://localhost:4000/api/REST/1.0/data/OracleEloquaApis",
                     method: "GET",
                     data: {
-                        "Id": "1"
+
                     }
                 }).then(function(response) {
                     console.log(response.data);
-
+                    $scope.Eloqua_api = response.data;
 
                 })
                 .catch(function(error) {
