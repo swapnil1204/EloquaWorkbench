@@ -78,4 +78,21 @@ workbench
                     alert("Error" + error)
                 });
         }
+
+        $scope.getParameterForCreateAccount = function() {
+            console.log("clicked getParameterForCreateAccount");
+            $http({
+
+                    url: "http://localhost:4000/api/REST/1.0/data/CreateAccountApis",
+                    method: "GET",
+                    data: {
+                        "Id": "1"
+                    }
+                }).then(function(response) {
+                    console.log(response.data);
+                })
+                .catch(function(error) {
+                    alert("Error" + error)
+                });
+        }
     });
