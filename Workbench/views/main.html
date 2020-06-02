@@ -4,7 +4,28 @@
             <div>
                 <p class="api-library">API LIBRARY</p>
                 <p class="how-to-use">How to use Eloquest Tool</p>
-                <p class="how-to-use" ng-click="getdropdown()">Eloqua Api's</p>
+
+                <div class="items">
+                    <input type="checkbox" id="A" />
+                    <img src="images/arrow.png" class="arrow"><label class="how-to-use remove_outline" for="A" ng-click="getdropdown()">Eloqua Api's</label>
+
+                    <ul>
+                        <li ng-repeat="data in Eloqua_api">
+                            <div class="sub-items">
+                                <input type="checkbox" id="B" />
+                                <img src="images/arrow.png" class="arrow"><label class="how-to-use remove_outline" for="B" ng-click="getaccountdropdown($index)">{{data.name}}</label>
+
+                                <ul>
+                                    <li ng-repeat="Acc in Accounts_api">
+                                        <img src="images/arrow.png" class="arrow"> <label class="how-to-use remove_outline" ng-click="CreateAnAccount()">{{Acc.Name}}</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+
             </div>
 
         </div>
@@ -12,7 +33,7 @@
             <div style=" background-color: #F9F9F9;height: 194px;float: right;">
                 <div class="row" style="margin: 0; padding:0 ;">
                     <div class="col-md-6">
-                        <p class="heading1">Create An Account API</p>
+                        <p class="heading1">{{Create_head[0].ApiHeader1}}</p>
                     </div>
                     <div class="col-md-6">
                         <p class="eloqua-link" style=" margin-right: 60px;">Eloqua Link </p>
@@ -20,121 +41,52 @@
                 </div>
 
                 <div class="row">
-                    <p class="create-account-para" style="color: #2F281E;">Creates an account that matches the criteria specified by the request body.</p>
+                    <p class="create-account-para" style="color: #2F281E;">{{Create_head[0].ApiHeader2}}</p>
                 </div>
 
-                <p class="slider" ng-click="Apidiv_function()" style="border: none;">API Form</p>
-                <p class="slider" ng-click="Query_function()" style="border: none;  margin-left: 130px;
-                margin-top: -50px;">Query UI</p>
+                <p id="Apiform" class="slider remove_outline" ng-click="Apidiv_function()" style="border: none;">{{Create_head[0].Tab1}}</p>
+                <p id="Query_Ui" class="slider remove_outline" ng-click="Query_function()" style="border: none;  margin-left: 130px;
+                margin-top: -50px;">{{Create_head[0].Tab2}}</p>
             </div>
             <div id="Api_div" style="margin-bottom: 100px;">
                 <div class="row div_1">
-                    <div class="col-md-6">
-                        <label class="label">Account Type</label><br>
-                        <input type="text" placeholder="Account Type 1" class="input-box" />
-                    </div>
-                    <div class="col-md-6">
-                        <label class="label">Account Name</label><br>
-                        <input type="text" placeholder="Account Name" class="input-box" />
+                    <div class="col-md-6 " style="margin-bottom: 50px;" ng-repeat="data in Create_api|limitTo:11">
+                        <label class="label">{{data.Name}}</label><br>
+                        <input type="text" ng-init="model=$eval(data.text)" placeholder="{{data.Name}}" class="input-box" />
 
                     </div>
                 </div>
                 <div class="row div_1">
+                    <div class="col-md-3" ng-repeat="data in Create_api|limitTo:14:11">
+                        <md-button class="md-raised save_btn" style="color:#ffffff;background-color: #E21F28;">{{data.Name}}</md-button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-9  " style="padding-top:50px;padding-left:70px;padding-bottom:100px;display:none;border-left:2px solid rgba(188, 208, 229, 0.5);" id="Query">
+                <div class="row">
                     <div class="col-md-12">
-                        <label class="label">Account Description</label><br>
+                        <label class="label">Request Body</label><br>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <input style="width: 935px; margin-left: 20px;" type="text" placeholder="Enter Account Description" class="input-box" />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row div_1">
-                    <div class="col-md-6">
-                        <label class="label">Address 1</label><br>
-                        <input type="text" placeholder="Address 1" class="input-box" />
-                    </div>
-                    <div class="col-md-6">
-                        <label class="label">Address 2</label><br>
-                        <input type="text" placeholder="Address 2" class="input-box" />
-
-                    </div>
-                </div>
-
-                <div class="row div_1">
-                    <div class="col-md-6">
-                        <label class="label">Business Phone</label><br>
-                        <input type="text" placeholder="Business Phone" class="input-box" />
-                    </div>
-                    <div class="col-md-6">
-                        <label class="label">City</label><br>
-                        <input type="text" placeholder="City" class="input-box" />
-
-                    </div>
-                </div>
-
-                <div class="row div_1">
-                    <div class="col-md-6">
-                        <label class="label">Country</label><br>
-                        <input type="text" placeholder="Country" class="input-box" />
-                    </div>
-                    <div class="col-md-6">
-                        <label class="label">Province   </label><br>
-                        <input type="text" placeholder="Province" class="input-box" />
-
-                    </div>
-                </div>
-
-                <div class="row div_1">
-                    <div class="col-md-6">
-                        <label class="label">Postal Code</label><br>
-                        <input type="text" placeholder="Postal Code" class="input-box" />
-                    </div>
-                    <div class="col-md-6">
-                        <label class="label">Remarks</label><br>
-                        <input type="text" placeholder="Remarks" class="input-box" />
-
-                    </div>
-                </div>
-
-                <div class="row div_1" style="margin-top: 60px;">
-                    <div class="col-md-4">
-                        <md-button class="md-raised save_btn" style="color:#ffffff;background-color: #E21F28;">Save</md-button>
-                    </div>
-                    <div class="col-md-3">
-                        <md-button style="width:186px;color:#E21F28;border: solid 1px #E21F28;" class="md-raised btn">Save</md-button>
-                    </div>
-                    <div class="col-md-1">
-                        <md-button style="color:#2F281E;border: solid 1px #2F281E;" class="md-raised btn">Cancel</md-button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-9  " style="padding-top:50px;padding-left:70px;padding-bottom:100px;display:none;border-left:2px solid rgba(188, 208, 229, 0.5);" id="Query">
-            <div class="row">
-                <div class="col-md-12">
-                    <label class="label">Request Body</label><br>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <textarea style="width: 935px;height:178px; margin-left: 20px;" placeholder=' {
+                            <textarea style="width: 935px;height:178px; margin-left: 20px;" placeholder=' {
                             "title": "Sample Konfabulator Widget",
                             "name": "main_window",
                             "width": 500,
                             "height": 500
                         }' class="input-box"></textarea>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row" style="padding-top: 50px;">
-                <div class="col-md-12">
-                    <label class="label">Response</label><br>
-                </div>
-                <div class="row">
+                <div class="row" style="padding-top: 50px;">
                     <div class="col-md-12">
-                        <textarea style="width: 935px;height:476px; margin-left: 20px;" placeholder='{
+                        <label class="label">Response</label><br>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <textarea style="width: 935px;height:476px; margin-left: 20px;" placeholder='{
                             "data": [{
                               "type": "articles",
                               "id": "1",
@@ -150,9 +102,9 @@
                                 }
                               }
                             }' class="input-box"></textarea>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
