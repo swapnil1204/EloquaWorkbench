@@ -8,10 +8,10 @@ module.exports.getOraceEloquaApisDetails= (req,res) => {
         })
 }
 
-module.exports.getCreateAccountApis= (req,res) => {
+module.exports.getAccountApis= (req,res) => {
     const services = require('../services/UserInterfaceServices');
     
-    services.getCreateAccountApis()
+    services.getAccountApis()
         .then((result) => {
             res.send(result).status(200);
         }).catch((error)=>{
@@ -19,10 +19,10 @@ module.exports.getCreateAccountApis= (req,res) => {
         })
 }
 
-module.exports.getAccountApis= (req,res) => {
+module.exports.getCreateAccountApis= (req,res) => {
     const services = require('../services/UserInterfaceServices');
     
-    services.getAccountApis()
+    services.getCreateAccountApis()
         .then((result) => {
             res.send(result).status(200);
         }).catch((error)=>{
