@@ -26,14 +26,15 @@ workbench
         //Get Accounts List Options
         $scope.getAccountsDropDown = function(id) {
             //console.log(id);
-            var URL; { URL = "http://localhost:4000/api/REST/1.0/data/AccountApis"; }
-            //console.log(URL);
+            let parentid=id;
+            var URL; { URL = "http://localhost:4000/api/REST/1.0/data/AccountApis/"+parentid; }
+            console.log(URL);
             $http({
                     url: URL,
                     method: "GET",
                     params: { "id": id }
                 }).then(function(response) {
-                    // console.log(response.data);
+                    console.log(response.data);
                     $scope.Accounts_api = response.data;
                 })
                 .catch(function(error) {
@@ -44,7 +45,7 @@ workbench
         //Get the field Title for inputs(Create Account Api)
         $scope.CreateAnAccount = function(id) {
                 $http({
-                        url: "http://localhost:4000/api/REST/1.0/data/CreateAccountApis",
+                        url: "http://localhost:4000/api/REST/1.0/data/CreateAccountApis/"+id+'/'+id,
                         method: "GET",
                         params: { "id": id }
                     }).then(function(response) {
