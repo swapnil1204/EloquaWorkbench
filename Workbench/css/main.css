@@ -155,3 +155,12 @@ input[type="checkbox"] {
 .items input:checked~label {
     color: red;
 }
+
+.send_btn {
+    border-radius: 4px;
+    width: 80px;
+    height: 36px;
+    float: left;
+    margin-top: 20px;
+    margin-left: 16px;
+}
