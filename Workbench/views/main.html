@@ -2,19 +2,17 @@
     <div class="row" style="padding:0;margin: 0;">
         <div class="col-md-3" style="margin:0;">
             <div>
-                <p class="api-library">API LIBRARY</p>
-                <p class="how-to-use">How to use Eloquest Tool</p>
-
+                <h1 class="api-library">API LIBRARY</h1>
+                <p class="how-to-use" style="margin-left: 40px;">How to use Eloquest Tool</p>
                 <div class="items">
                     <input type="checkbox" id="A" />
-                    <img src="images/arrow.png" class="arrow"><label class="how-to-use remove_outline" for="A" ng-click="getdropdown()">Eloqua Api's</label>
-
+                    <img src="images/arrow.png" class="arrow">
+                    <label class="how-to-use remove_outline" for="A" ng-click="getdropdown()">Eloqua Api's</label>
                     <ul>
                         <li ng-repeat="data in Eloqua_api">
                             <div class="sub-items">
                                 <input type="checkbox" id="B" />
                                 <img src="images/arrow.png" class="arrow"><label class="how-to-use remove_outline" for="B" ng-click="getaccountdropdown($index)">{{data.name}}</label>
-
                                 <ul>
                                     <li ng-repeat="Acc in Accounts_api">
                                         <img src="images/arrow.png" class="arrow"> <label class="how-to-use remove_outline" ng-click="CreateAnAccount()">{{Acc.Name}}</label>
@@ -23,11 +21,8 @@
                             </div>
                         </li>
                     </ul>
-
                 </div>
-
             </div>
-
         </div>
         <div class="col-md-9" style="margin-left:0px;border-left:2px solid rgba(188, 208, 229, 0.5);padding: 0;">
             <div style=" background-color: #F9F9F9;height: 194px;float: right;">
@@ -50,14 +45,28 @@
             </div>
             <div id="Api_div" style="margin-bottom: 100px;">
                 <div class="row div_1">
-                    <div class="col-md-6 " style="margin-bottom: 50px;" ng-repeat="data in Create_api|limitTo:11">
+                    <div class="col-md-6" style="margin-bottom: 50px;" ng-repeat="data in Create_api|limitTo:2">
+                        <div>
+                            <label class="label">{{data.Name}}</label><br>
+                            <input type="text" ng-init="model=$eval(data.text)" placeholder="{{data.Name}}" class="input-box" />
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-bottom: 50px;" ng-repeat="data in Create_api|limitTo:1:2">
                         <label class="label">{{data.Name}}</label><br>
-                        <input type="text" ng-init="model=$eval(data.text)" placeholder="{{data.Name}}" class="input-box" />
-
+                        <input type="text" style="width:90%;" ng-init="model=$eval(data.text)" placeholder="{{data.Name}}" class="input-box" />
+                    </div>
+                    <div class="col-md-6" style="margin-bottom: 50px;" ng-repeat="data in Create_api|limitTo:8:3">
+                        <div>
+                            <label class="label">{{data.Name}}</label><br>
+                            <input type="text" ng-init="model=$eval(data.text)" placeholder="{{data.Name}}" class="input-box" />
+                        </div>
                     </div>
                 </div>
-                <div class="row div_1">
-                    <div class="col-md-3" ng-repeat="data in Create_api|limitTo:14:11">
+                <div class="row div_1" ng-if="$index==2">
+
+                </div>
+                <div class="row div_1" style="margin-bottom: 100px;padding-left: 400px;">
+                    <div class="col-md-2" ng-repeat="data in Create_api|limitTo:14:11">
                         <md-button class="md-raised save_btn" style="color:#ffffff;background-color: #E21F28;">{{data.Name}}</md-button>
                     </div>
 
@@ -108,3 +117,4 @@
             </div>
         </div>
     </div>
+</div>

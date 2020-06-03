@@ -105,20 +105,13 @@
 }
 
 .how-to-use {
-    /* color: #E21F28;
-    font-family: Helvetica;
-    font-size: 16px;
-    font-weight: 400;
-    text-align: left;
-    margin-top: 40px;
-    margin-left: 40px; */
     color: #4A4A4A;
     font-family: Helvetica;
     font-size: 16px;
     font-weight: 400;
     text-align: left;
     margin-top: 35px;
-    margin-left: 40px;
+    margin-left: 0px;
 }
 
 .remove_outline {
@@ -128,7 +121,6 @@
 
 ul {
     list-style-type: none;
-    /* list-style: square inside url('https://cdns.iconmonstr.com/wp-content/assets/preview/2012/240/iconmonstr-arrow-24.png'); */
 }
 
 .multilevel,
@@ -152,10 +144,14 @@ input[type="checkbox"] {
 
 .items input+.arrow {
     transform: rotate(0deg);
-    transition: 0.9s;
+    transition: 0.6s;
 }
 
 .items input:checked+.arrow {
     transform: rotate(90deg);
-    transition: 0.1s;
+    transition: 0.6s;
+}
+
+.items input:checked~label {
+    color: red;
 }
