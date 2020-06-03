@@ -2,6 +2,7 @@
     const db = require('../config/dbConfig');
     const Q = require('q');
     services.getOraceEloquaApisDetails = function () {
+
         const deferred = Q.defer();
         
         const query = `SELECT * from ApiAssetGroup`;
@@ -12,12 +13,15 @@
             deferred.reject(err);
         });
         return deferred.promise;
+
     }
 
-    services.getAccountApis = function () {
+    services.getAccountApis = function (params) {
         const deferred = Q.defer();
+
+        let apiAssetGroupId = params.parentId;
         
-        const query = `select Id, Name from ApiType where ApiAssetGroupId=1;`;
+        const query = `select Id, Name from ApiType where ApiAssetGroupId=${apiAssetGroupId};`;
                            
         db.query(query).then((pack) => {                     
             deferred.resolve(pack); 
@@ -25,19 +29,23 @@
             deferred.reject(err);
         });
         return deferred.promise;
+
     }
 
 
-    services.getCreateAccountApis = function () {
+    services.getCreateAccountApis = function (params) {
         const deferred = Q.defer();
+
+        let apiTypeIdForeignKey = params.parentId;
+        let apiTypeIdPrimaryKey = params.childId;
         
-        const query2 = `SELECT ApiTypeId, Name, Placeholder, Required from ApiParameter where ApiTypeId=1`;
+        const query1 = `SELECT ApiTypeId, Name, Placeholder, Required from ApiParameter where ApiTypeId=${apiTypeIdForeignKey}`;
         
-        const query3 = `SELECT Id, ApiHeader1, ApiHeader2, TypeOfActivity,
-                        HttpMethod, Tab1, Tab2, Tab3, ApiEndPoint from ApiType where ApiType.Id=1`;
+        const query2 = `SELECT Id, ApiHeader1, ApiHeader2, TypeOfActivity,
+                        HttpMethod, Tab1, Tab2, Tab3, ApiEndPoint from ApiType where ApiType.Id=${apiTypeIdPrimaryKey}`;
                         
-        db.query(query3).then((pack) => {
-            db.query(query2).then((result)=>{
+        db.query(query2).then((pack) => {
+            db.query(query1).then((result)=>{
             let response = {}
             response.elements = pack;
             response.parameter = result;
@@ -50,7 +58,8 @@
             deferred.reject(err);
         });
         return deferred.promise;
-        }
+
+    }
 
 
 })(module.exports);

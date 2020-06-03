@@ -22,7 +22,8 @@ app.use((req, res, next) => {
 
 app.use('/api/REST/1.0/data/',routes);
 
-const port = process.env.port;
+const port = process.env.port || 4000;
+
 app.listen(port,()=>{
     console.log("server is up and running on : ",port);
 });
