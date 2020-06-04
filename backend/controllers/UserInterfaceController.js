@@ -40,3 +40,18 @@ module.exports.getCreateAccountApis= (req,res) => {
     })
 
 }
+
+module.exports.account= (req,res) => {
+   
+    let params = { name:req.body.name, address1:req.body.address1};
+
+    const services = require('../services/UserInterfaceServices');
+    
+    services.account(params)
+    .then((result) => {
+        res.send(result).status(200);
+    }).catch((error)=>{
+        res.send(error);
+    })
+
+}

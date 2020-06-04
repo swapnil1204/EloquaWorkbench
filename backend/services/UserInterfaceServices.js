@@ -1,6 +1,7 @@
 (function(services) {
     const db = require('../config/dbConfig');
     const Q = require('q');
+    
     services.getOraceEloquaApisDetails = function () {
 
         const deferred = Q.defer();
@@ -60,6 +61,29 @@
         return deferred.promise;
 
     }
+
+    services.account = function (parameter) {
+        //const account = require('../model/model');
+        //let Account = new account.account(parameter);
+        let Account = {
+        "name" : parameter.name,
+        "address1" : parameter.address1
+        };
+
+        const deferred = Q.defer();
+        console.log(" i m in service account ",Account.name,Account.address1);
+        
+        const query = `INSERT INTO ACCOUNT (name,address1) VALUES ("${Account.name}", "${Account.address1}")`;
+                             
+        db.query(query).then((pack) => {                  
+            deferred.resolve(pack); 
+        }, (err) => {
+            deferred.reject(err);
+        });
+        return deferred.promise;
+
+    }
+
 
 
 })(module.exports);

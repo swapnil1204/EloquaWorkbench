@@ -10,4 +10,6 @@ router.get('/AccountApis/:parentId',controller.getAccountApis);
 
 router.get('/CreateAccountApis/:parentId/:childId',controller.getCreateAccountApis);
 
+router.post('/account',controller.account);
+
 module.exports = router;
