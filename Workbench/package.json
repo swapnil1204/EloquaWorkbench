@@ -2,10 +2,10 @@
     "name": "workbench",
     "version": "1.0.0",
     "description": "workbench",
-    "main": "index.js",
+    "main": "index.html",
     "scripts": {
         "test": "echo \\\"Error: no test specified\\\" && exit 1",
-        "start": "node server"
+        "start": "http-server -c-1"
     },
     "keywords": [
         "workbench"
