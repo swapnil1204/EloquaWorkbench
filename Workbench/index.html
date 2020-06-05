@@ -27,20 +27,15 @@
 <link rel="stylesheet" type="text/css" href="css/home.css" />
 <!-- main css -->
 <link rel="stylesheet" type="text/css" href="css/main.css" />
-<!-- get started css -->
-<link rel="stylesheet" type="text/css" href="css/getStarted.css" />
-
 
 </head>
 
 <body ng-app="workbench" style="background-color: #FFFFFF;margin: 0;padding: 0;right:0;overflow-x: hidden;">
     <!-- header -->
     <div class="row" style="border-bottom:1.5px solid rgba(188, 208, 229, 0.5) ;">
-        <div class="col-md-12" style="display:flex;flex-wrap:wrap;height:100px">
-            <img src="/images/icon.jpg" class="icon1" />
-            <p style="color: #E21F28;  font-size: 40px; font-weight: 600;
-                 margin-left:10px;margin-top: 22px;">Eloqua Workbench</p>
-            <div style="margin-top: 37px; margin-left:200px;text-align: right;">
+        <div class="col-md-12" style="padding:22px">
+            <p class="mainhead"> <img src="/images/icon.jpg" class="icon1" /> Eloqua Workbench</p>
+            <div style="display:inline;padding: 80px;">
                 <span class="menu"><a style="color: #2F281E;"> API Library</a></span>
                 <span class="menu"><a style="color: #2F281E;"> Features</a></span>
                 <span class="menu"><a style="color: #2F281E;">Contact Us </a></span>
@@ -51,7 +46,6 @@
 
         </div>
     </div>
-
     <div class="main" ui-view="">
 
     </div>
@@ -73,8 +67,6 @@
         </div>
     </div>
 
-
-
     <!-- App Start -->
 
     <script src="app.js"></script>
@@ -82,7 +74,6 @@
 
     <script src="controllers/homeController.js"></script>
     <script src="controllers/mainController.js"></script>
-    <script src="controllers/getStartedController.js"></script>
     <!-- <script src="controllers/homeController.js"></script> -->
 
 

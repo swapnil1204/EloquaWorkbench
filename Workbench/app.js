@@ -2,7 +2,10 @@
 var workbench = angular.module('workbench', ['ui.router', 'ngTable', 'ngMaterial', 'ngAria']);
 workbench.config(['$stateProvider', '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/');
+
+        // $urlRouterProvider.otherwise('/');
+
+        $urlRouterProvider.otherwise('/home');
         $stateProvider
             .state('home', {
                 url: '/home',
