@@ -19,7 +19,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/api/REST/1.0/data/',require('./routes/customApiRoute'));
+app.use('/custom-api/1.0/',require('./routes/customApiRoute'));
 app.use('/',require('./routes/mainApiRoute'));
 
 const port = process.env.port || 4000;

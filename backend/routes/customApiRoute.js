@@ -4,10 +4,10 @@ const router = express.Router();
 
 const controller = require('../controllers/UserInterfaceController');
 
-router.get('/OracleEloquaApis',controller.getOraceEloquaApisDetails);
+router.get('/assets',controller.getOraceEloquaApisDetails);
 
-router.get('/AccountApis/:parentId',controller.getAccountApis);
+router.get('/assets-types/:parentId',controller.getAccountApis);
 
-router.get('/CreateAccountApis/:parentId/:childId',controller.getCreateAccountApis);
+router.get('/assets-type-parameters/:parentId/:childId',controller.getCreateAccountApis);
 
 module.exports = router;
