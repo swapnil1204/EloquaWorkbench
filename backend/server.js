@@ -1,5 +1,4 @@
 const app = require('./app.js');
-const routes = require('./routes/routes');
 const bodyparser = require('body-parser');
 require('dotenv').config();
 
@@ -20,7 +19,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/api/REST/1.0/data/',routes);
+app.use('/custom-api/1.0/',require('./routes/customApiRoute'));
+app.use('/',require('./routes/mainApiRoute'));
 
 const port = process.env.port || 4000;
 

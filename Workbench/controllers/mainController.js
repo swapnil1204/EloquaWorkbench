@@ -10,9 +10,9 @@ workbench
         //Get Eloqua Api's list
         $scope.getEloquaDropDown = function(id) {
             $scope.Eloqua_api = null;
-            //console.log("clicked");
+            console.log("clicked");
             $http({
-                    url: "http://localhost:4000/api/REST/1.0/data/OracleEloquaApis",
+                    url: "http://localhost:8080/custom-api/1.0/assets",
                     method: "GET",
                     params: { "id": "1" }
                 }).then(function(response) {
@@ -30,14 +30,14 @@ workbench
             //console.log(id);
 
             let parentid = id;
-            var URL; { URL = "http://localhost:4000/api/REST/1.0/data/AccountApis/" + parentid; }
+            var URL; { URL = "http://localhost:8080/custom-api/1.0/assets-types/" + parentid; }
             //console.log(URL);
             $http({
                     url: URL,
                     method: "GET",
-                    params: { "id": id }
+                    //params: { "id": id }
                 }).then(function(response) {
-                    // console.log(response.data);
+                    console.log(response.data);
                     $scope.Accounts_api = response.data;
                     $scope.id = id;
                 })
@@ -51,11 +51,11 @@ workbench
                 document.getElementById("getStarted").style.display = "none";
                 document.getElementById("main").style.display = "block";
                 $http({
-                        url: "http://localhost:4000/api/REST/1.0/data/CreateAccountApis/" + id + '/' + id,
+                        url: "http://localhost:8080/custom-api/1.0/assets-type-parameters/" + id + '/' + id,
                         method: "GET",
                         params: { "id": id }
                     }).then(function(response) {
-                        // console.log(response.data);
+                        console.log(response.data);
                         $scope.Create_api = response.data.parameter;
                         $scope.Create_head = response.data.elements;
                         $scope.Id = id;

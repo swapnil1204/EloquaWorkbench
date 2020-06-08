@@ -1,0 +1,22 @@
+{
+  "host": "localhost",
+  "port": 8080,
+
+  "eloquaConfig": {
+    "tokenUrl": "https://login.eloqua.com/auth/oauth2/token/",
+    "redirectUri": "http://apps.portqii.com:8066/api/REST/1.0/data/AccountApis",
+    "clientId": "8629bd1e-af1d-4e3d-be5a-0462aaf78275",
+    "clientSecret": "1gDjQ6l7dGk2kqaLR3n57USLTK1H8YXOMoeBOFAGtVd0N5wOILyCxEICSl-LE9Ie9nqOjknkvOCGgxRsBH0FSbEHohBi1kt--Eh7"
+  },
+  
+  "appBaseUrl": "https://apps.portqii.com",
+  
+ 
+  "instanceConfig": {
+    "siteId": "250973722",
+    "siteName": "TechnologyPartnerPORTQIIPTELTD",
+    "userName": "Anamika.Singh",
+    "password": "Eloqua123"
+  },
+  "basicAuthFlag": false
+}
