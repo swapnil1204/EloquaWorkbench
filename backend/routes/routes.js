@@ -4,12 +4,12 @@ const router = express.Router();
 
 const controller = require('../controllers/UserInterfaceController');
 
-router.get('/OracleEloquaApis',controller.getOraceEloquaApisDetails);
+router.get('/OracleEloquaApis', controller.getOraceEloquaApisDetails);
 
-router.get('/AccountApis/:parentId',controller.getAccountApis);
+router.get('/AccountApis/:parentId', controller.getAccountApis);
 
-router.get('/CreateAccountApis/:parentId/:childId',controller.getCreateAccountApis);
+router.get('/CreateAccountApis/:parentId/:childId', controller.getCreateAccountApis);
 
-router.post('/account',controller.account);
+router.post('/account', function(req, res) { console.log(req.body); });
 
 module.exports = router;

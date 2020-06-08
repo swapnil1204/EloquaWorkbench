@@ -1,6 +1,7 @@
 workbench
     .controller('mainController', function($http, $scope, $location) {
         var main = $scope.main = {};
+        var account = $scope.account = {};
         main.init = function() {
             // console.log("hello");
         }
@@ -65,9 +66,32 @@ workbench
                     });
             }
             //Get data from Form
-        $scope.getFormData = function() {
-            $scope.text;
-            console.log($scope.text);
+        $scope.getFormData = function(account) {
+            console.log(account);
+
+            $http({
+                    url: "http://localhost:4000/api/REST/1.0/data/account",
+                    method: "POST",
+                    body: {
+                        "accountType": account.user[0],
+                        "AccountName": account.user[1],
+                        "description": account.desc[0],
+                        "address1": account.details[0],
+                        "address2": account.details[1],
+                        "business": account.details[2],
+                        "city": account.details[3],
+                        "country": account.details[4],
+                        "province": account.details[5],
+                        "Postal_code": account.details[6],
+                        "remark": account.details[7]
+                    }
+                }).then(function(response) {
+                    console.log(response);
+
+                })
+                .catch(function(error) {
+                    alert("Error" + error)
+                });
         }
 
         //Swap Api div And Query div
