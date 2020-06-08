@@ -60,24 +60,25 @@
                     <div class="col-md-6" style="margin-bottom: 50px;" ng-repeat="data in Create_api|limitTo:2">
                         <div>
                             <label class="label">{{data.Name}}</label><br>
-                            <input type="text" ng-init="model=$eval(data.text)" placeholder="{{data.Name}}" class="input-box" />
+                            <input ng-model="account.user[$index]" type="text" ng-init="model=$eval(data.text)" placeholder="{{data.Name}}" class="input-box" />
+                            <p>{{user}}</p>
                         </div>
                     </div>
                     <div class="col-md-12" style="margin-bottom: 50px;" ng-repeat="data in Create_api|limitTo:1:2">
                         <label class="label">{{data.Name}}</label><br>
-                        <input type="text" style="width:90%;" ng-init="model=$eval(data.text)" placeholder="{{data.Name}}" class="input-box" />
+                        <input ng-model="account.desc[$index]" type="text" style="width:90%;" ng-init="model=$eval(data.text)" placeholder="{{data.Name}}" class="input-box" />
                     </div>
                     <div class="col-md-6" style="margin-bottom: 50px;" ng-repeat="data in Create_api|limitTo:8:3">
                         <div>
                             <label class="label">{{data.Name}}</label><br>
-                            <input type="text" ng-init="model=$eval(data.text)" placeholder="{{data.Name}}" class="input-box" />
+                            <input ng-model="account.details[$index]" type="text" ng-init="model=$eval(data.text)" placeholder="{{data.Name}}" class="input-box" />
                         </div>
                     </div>
 
                     <!-- Form Buttons -->
                     <div class="row div_1" style="margin-bottom: 100px;padding-left: 400px;">
                         <div class="col-md-2" ng-repeat="data in Create_api|limitTo:14:12">
-                            <md-button ng-click="getFormData()" class="md-raised save_btn" style="color:#ffffff;background-color: #E21F28;">{{data.Name}}</md-button>
+                            <md-button ng-click="getFormData(account)" class="md-raised save_btn" style="color:#ffffff;background-color: #E21F28;">{{data.Name}}</md-button>
                         </div>
 
                     </div>
