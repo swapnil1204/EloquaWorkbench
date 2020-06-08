@@ -54,16 +54,22 @@
     }
 
     contentService.reachToEloqua = function (headers) {
-        console.log(" I am in reachToEloqua service ",headers.cookie);
-        const deferred = Q.defer();
-		contentServiceUtility.parseCookie(headers.cookie)
-		 .then(function(cookieObj){	
-			if(cookieObj.userInfo)
-			{
+        // console.log(" I am in reachToEloqua service ",headers.cookie);
+         const deferred = Q.defer();
+		// contentServiceUtility.parseCookie(headers.cookie)
+		//  .then(function(cookieObj){	
+		// 	if(cookieObj.userInfo)
+		// 	{
+		// 		// var payload = {
+				// 	"siteId": cookieObj.userInfo.siteId,
+				// 	"accessToken": cookieObj.userInfo.accesstoken,
+				// 	"host": cookieObj.userInfo.baseUrl + "/API/REST/2.0/assets/contact/field/100001",
+				// };
+
 				var payload = {
-					"siteId": cookieObj.userInfo.siteId,
-					"accessToken": cookieObj.userInfo.accesstoken,
-					"host": cookieObj.userInfo.baseUrl + "/API/REST/2.0/assets/contact/field/100001",
+					"siteId": 250973722,
+					"accessToken": 'MjUwOTczNzIyOjFZTGg1emd4YjhFdXh3c2hBc0s4S0FkS0c5UU9FOUlEcH5jZmRYaGNLQWxRSn5LRGQ2WWt5OWhHQnIyc1pwVWlHSld5bXM1dWhmMWRXaUpLLXVNWi1Fbi00TnBJNE1+dzdkVHA=',
+					"host": 'https://secure.p02.eloqua.com' + "/api/REST/1.0/data/account/3629",
 				};
 
 				eloquaCallsOAuth.get(payload)
@@ -74,16 +80,16 @@
 				.catch(function (error) {
 					deferred.reject("Error in Eloqua Get " + error);
 				})
-			}
-			else
-			{
+			// }
+			// else
+			// {
 				
-			}
-		})
-		.catch(function(error){
-			console.log("Error in parseCookie "+error);
-				deferred.resolve("Data not found");
-		});
+			// }
+		//})
+		// .catch(function(error){
+		// 	console.log("Error in parseCookie "+error);
+		// 		deferred.resolve("Data not found");
+		// });
         return deferred.promise;
     }
 

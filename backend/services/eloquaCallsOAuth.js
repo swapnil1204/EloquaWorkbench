@@ -108,24 +108,28 @@
 	}
 
 	eloquaCallsOAuth.post = function (userInformation, resultantFunction) {
-		//userInformation, resultantFunction
-		var userInformation = {};
 		var deferred = Q.defer();
-		userInformation.accessToken="MjUwOTczNzIyOjFGUVlOdWpkb0kwZVZldS1TdlI0R3dSeXcwYnliVDVtTmc0ZDhYa1haWUN3QWt0eG1SbndUMzNKbWlPbHIzLVU2STYtMUlsb3NGTi1hMDh5cmFTUnlsb0JQUW9qbjNTWjJkZFo="
-		userInformation.host="https://secure.p02.eloqua.com";
-		console.log(" I am in /getEndPoint im in pOST POST ",userInformation);
-
 		var authenticationHeader = "Bearer " + userInformation.accessToken;
+		// var options = {
+		// 	url: userInformation.host,
+		// 	headers: { "Authorization": authenticationHeader, "Connections": "keep-alive" },
+		// 	method: 'POST',
+		// 	body: userInformation.body,
+		// 	json: true,
+		// }
 		var options = {
-			url: userInformation.host,
+			url: userInformation.host + '/api/REST/1.0/data/account',
 			headers: { "Authorization": authenticationHeader, "Connections": "keep-alive" },
 			method: 'POST',
 			body: userInformation.body,
 			json: true,
 		}
+		
+		console.log('I am eloqua calls oauth ',options);
+		
 		request(options, resultantFunction)
 			.then(function (result) {
-				console.log("POST Eloqua Success");
+				console.log("POST Eloqua Success",result);
 				deferred.resolve(result);
 			})
 			.catch(function (error) {
@@ -147,20 +151,20 @@
 			// 				}
 			// 				else {
 			// 					// make the get call using basic auth					
-			// 					dbUtility.getInstanceDetails(userInformation.siteId)
-			// 						.then(function (instanceDetails) {
-			// 							var eloquaPassword = adminConfig.decryptPass(instanceDetails[0].Eloqua_Password);
-			// 							var getPayload = {
-			// 								"host": userInformation.host,
-			// 								"siteName": config.instanceConfig.siteName,
-			// 								"userName": instanceDetails[0].Eloqua_Username,
-			// 								"password": eloquaPassword,
-			// 							}
-			// 							eloquaCallBasicAuth.post(getPayload)
-			// 								.then(function (getResult) {
-			// 									console.log("POST Eloqua Success - Basic Auth");
-			// 									deferred.resolve(getResult);
-			// 								})
+								// dbUtility.getInstanceDetails(userInformation.siteId)
+								// 	.then(function (instanceDetails) {
+								// 		var eloquaPassword = adminConfig.decryptPass(instanceDetails[0].Eloqua_Password);
+								// 		var getPayload = {
+								// 			"host": userInformation.host,
+								// 			"siteName": config.instanceConfig.siteName,
+								// 			"userName": instanceDetails[0].Eloqua_Username,
+								// 			"password": eloquaPassword,
+								// 		}
+								// 		eloquaCallBasicAuth.post(getPayload)
+								// 			.then(function (getResult) {
+								// 				console.log("POST Eloqua Success - Basic Auth");
+								// 				deferred.resolve(getResult);
+								// 			})
 			// 								.catch(function (error) {
 			// 									console.log("Error in Eloqua POST - Basic Auth " + error)
 			// 									deferred.reject(error)
@@ -174,7 +178,7 @@
 			// 			})
 			// 	}
 			// 	else {
-			// 		console.log("Error in POST Eloqua Error Code " + error.statusCode + "Error " + error)
+			 		console.log("Error in POST Eloqua Error Code " + error.statusCode + "Error " + error)
 					deferred.reject(error);
 			// 	}
 			 })

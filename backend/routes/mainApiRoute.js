@@ -1,11 +1,23 @@
 const express = require('express');
 
-const router = express.Router();
+const router = express.Router({caseSensitive: true,strict:true});
 
 const contentService = require('../services/contentService');
 
 router.post('/account',(req,res)=>{
-	res.send(" Acccount created successfully ! ");
+	 const eloquaCallsOAuth = require('../services/eloquaCallsOAuth');
+	 let info = {
+	"accessToken": 'MjUwOTczNzIyOjFZTGg1emd4YjhFdXh3c2hBc0s4S0FkS0c5UU9FOUlEcH5jZmRYaGNLQWxRSn5LRGQ2WWt5OWhHQnIyc1pwVWlHSld5bXM1dWhmMWRXaUpLLXVNWi1Fbi00TnBJNE1+dzdkVHA=',
+	"host":"https://secure.p02.eloqua.com",	
+	body:{
+		"name":req.body.name,
+    	"address1":req.body.address1,
+    	"city":req.body.city,
+    	"country":req.body.country
+	}
+	}
+	eloquaCallsOAuth.post(info)
+	//res.send(" Acccount created successfully ! ");
 });
 
 router.get('/saveToken',function(req,res){	
